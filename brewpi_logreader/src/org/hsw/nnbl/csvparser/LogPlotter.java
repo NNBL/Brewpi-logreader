@@ -98,7 +98,7 @@ public class LogPlotter extends ApplicationFrame {
         final XYSeries series2 = new XYSeries("Fridge temp");
         final XYSeries series3 = new XYSeries("Fridge setting");
 
-        CsvReader foobar = new CsvReader("f:\\Dropbox\\Brygging\\sample.csv",';');
+        CsvReader foobar = new CsvReader("sample.csv",';');
 		
         //Feb 05 2014 23:49:42; 12.05 ; 11.0 ; None ; 10.13 ; 1.0 ; None ; 5 ; None
 		
