@@ -61,7 +61,7 @@ import com.csvreader.CsvReader;
  * {@link XYDataset}.
  *
  */
-public class LineChartDemo6 extends ApplicationFrame {
+public class LogPlotter extends ApplicationFrame {
 
     /**
 	 * 
@@ -74,7 +74,7 @@ public class LineChartDemo6 extends ApplicationFrame {
      * @param title  the frame title.
 	 * @throws IOException 
      */
-    public LineChartDemo6(final String title) throws IOException {
+    public LogPlotter(final String title) throws IOException {
 
         super(title);
 
@@ -190,7 +190,7 @@ public class LineChartDemo6 extends ApplicationFrame {
      */
     public static void main(final String[] args) throws IOException {
 
-        final LineChartDemo6 demo = new LineChartDemo6("Brewpi fermentation log - Grande Mexican Lager");
+        final LogPlotter demo = new LogPlotter("Brewpi fermentation log - Grande Mexican Lager");
         demo.pack();
         RefineryUtilities.centerFrameOnScreen(demo);
         demo.setVisible(true);
