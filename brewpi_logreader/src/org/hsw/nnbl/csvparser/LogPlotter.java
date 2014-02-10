@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
@@ -38,7 +37,6 @@ public class LogPlotter extends ApplicationFrame {
 
         CsvReader foobar = new CsvReader("sample.csv",';');
 		
-
         int i = 1;
 		
         while (foobar.readRecord()) {
@@ -48,7 +46,6 @@ public class LogPlotter extends ApplicationFrame {
 			series1.add(i,Float.parseFloat(beertemp));
 			series2.add(i,Float.parseFloat(fridgetemp));
 			series3.add(i,Float.parseFloat(fridgesetting));
-
 			i++;
 		}
 		
@@ -80,13 +77,10 @@ public class LogPlotter extends ApplicationFrame {
         chart.setBackgroundPaint(Color.white);
 
         final XYPlot plot = chart.getXYPlot();
-        plot.setBackgroundPaint(Color.lightGray);
-        plot.setDomainGridlinePaint(Color.white);
-        plot.setRangeGridlinePaint(Color.white);
+        plot.setBackgroundPaint(Color.white);
+        plot.setDomainGridlinePaint(Color.black);
+        plot.setRangeGridlinePaint(Color.black);
         
-        final NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
         return chart;
         
     }
