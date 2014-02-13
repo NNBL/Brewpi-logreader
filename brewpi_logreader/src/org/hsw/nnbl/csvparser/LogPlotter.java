@@ -9,12 +9,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
-import com.csvreader.CsvReader;
 
 public class LogPlotter extends ApplicationFrame {
     private static final long serialVersionUID = 1L;
@@ -30,33 +27,9 @@ public class LogPlotter extends ApplicationFrame {
 
     }
     private XYDataset createDataset() throws IOException {
-        
-        final XYSeries series1 = new XYSeries("Beer temp");
-        final XYSeries series2 = new XYSeries("Fridge temp");
-        final XYSeries series3 = new XYSeries("Fridge setting");
-
-        CsvReader foobar = new CsvReader("sample.csv",';');
-		
-        int i = 1;
-		
-        while (foobar.readRecord()) {
-			String beertemp = foobar.get(1);
-			String fridgetemp = foobar.get(4);
-			String fridgesetting = foobar.get(5);
-			series1.add(i,Float.parseFloat(beertemp));
-			series2.add(i,Float.parseFloat(fridgetemp));
-			series3.add(i,Float.parseFloat(fridgesetting));
-			i++;
-		}
-		
-		foobar.close();
-        
-        final XYSeriesCollection dataset = new XYSeriesCollection();
-        dataset.addSeries(series1);
-        dataset.addSeries(series2);
-        dataset.addSeries(series3);
-
-        return dataset;
+        String filename = "sample.csv"; 
+    	DataSetFromFilename dataset = new DataSetFromFilename(filename);
+        return dataset.dataset;
         
     }
     
@@ -64,8 +37,8 @@ public class LogPlotter extends ApplicationFrame {
         
         // create the chart...
         final JFreeChart chart = ChartFactory.createXYLineChart(
-            "Grande mexican lager",      // chart title
-            "Time [30s]",                      // x axis label
+            "sample file",      // chart title
+            "Time [s]",                      // x axis label
             "Degrees [C]",                      // y axis label
             dataset,                  // data
             PlotOrientation.VERTICAL,
@@ -74,10 +47,10 @@ public class LogPlotter extends ApplicationFrame {
             false                     // urls
         );
 
-        chart.setBackgroundPaint(Color.white);
+        chart.setBackgroundPaint(Color.gray);
 
         final XYPlot plot = chart.getXYPlot();
-        plot.setBackgroundPaint(Color.white);
+        plot.setBackgroundPaint(Color.gray);
         plot.setDomainGridlinePaint(Color.black);
         plot.setRangeGridlinePaint(Color.black);
         
