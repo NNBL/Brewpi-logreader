@@ -1,5 +1,4 @@
-import numpy as np
-import matplotlib.pyplot as pl
+import pandas as pd
 
 class DataFromCSV():
     """Parse data from a Brewpi log"""
@@ -7,15 +6,11 @@ class DataFromCSV():
         if filename is not None:
             self._filename = filename
         else:
-            print "Need a filename"
-
+            print "Need a filename" 
+    
     def getdata(self):
-        return np.genfromtxt(self._filename, delimiter=";", names={"Date",\
-                                                                "BeerTemp",\
-                                                                "BeerSetting",\
-                                                                "BeerAnnotation",\
-                                                                "FridgeTemp",\
-                                                                "FridgeSetting",\
-                                                                "FridgeAnnotation",\
-                                                                "RoomTemp",\
-                                                                "State"})
+        
+        names = "Date", "BeerTemp", "BeerSetting", "BeerAnnotation", "FridgeTemp",\
+                "FridgeSetting", "FridgeAnnotation", "RoomTemp", "State"
+        
+        return pd.read_csv(self._filename, sep=";", header=None, parse_dates=[0], names=names, na_values="None")        
