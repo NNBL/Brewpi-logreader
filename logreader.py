@@ -14,9 +14,9 @@ else:
     date = [d.to_datetime() for d in data["Date"]]
     pl.title("Fermentation profile for: "+sys.argv[1])
     pl.xticks(rotation=50)
-    pl.plot(date,data["BeerTemp"])
-    pl.plot(date,data["BeerSetting"])
-    pl.plot(date,data["FridgeTemp"])
-    pl.plot(date,data["FridgeSetting"])
+    pl.plot(date,data["BeerTemp"], label="Beer temp", color="green")
+    pl.plot(date,data["BeerSetting"], label="Beer setting",color="red")
+    pl.plot(date,data["FridgeTemp"], label="Fridge temp",color="blue")
+    pl.plot(date,data["FridgeSetting"], label="Fridge setting", color="orange")
     pl.grid()
     pl.show()
