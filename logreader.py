@@ -10,7 +10,7 @@ if len(sys.argv) < 2:
     print "Usage: python "+sys.argv[0]+" filename.csv"
 else:
     data = DataFromCSV(sys.argv[1]).getdata()
-    
+    #TODO: Find a more efficient way of importing the date.
     date = [d.to_datetime() for d in data["Date"]]
     pl.title("Fermentation profile for: "+sys.argv[1])
     pl.xticks(rotation=50)
@@ -19,4 +19,5 @@ else:
     pl.plot(date,data["FridgeTemp"], label="Fridge temp",color="blue")
     pl.plot(date,data["FridgeSetting"], label="Fridge setting", color="orange")
     pl.grid()
+    pl.legend()
     pl.show()
